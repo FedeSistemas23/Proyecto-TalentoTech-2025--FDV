@@ -33,7 +33,7 @@ export default function Menu() {
               <NavDropdown.Item as={Link} to="/productos/perfumeria">Perfumería</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link as={Link} to="/unlock" style={linkStyle}>Unlock</Nav.Link>
-            <Nav.Link as={Link} to="/magenta" style={linkStyle}>Magenta</Nav.Link>
+            <Nav.Link as={Link} to="/Coraje" style={linkStyle}>Coraje</Nav.Link>
             <Nav.Link as={Link} to="/conocenos" style={linkStyle}>Conocenos</Nav.Link>
             <Nav.Link as={Link} to="/contacto" style={linkStyle}>Contacto</Nav.Link>
           </Nav>            

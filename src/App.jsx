@@ -9,9 +9,11 @@ import Login from './pages/Login';
 import Perfil from './pages/Perfil';
 import Conocenos from './pages/Conocenos';
 import Contacto from './pages/Contacto';
-//import Productos from './pages/Productos';
+import Productos from './pages/Productos';
 import Administracion from './pages/Admin';
 import RutaProtegida from './components/RutaProtegidas';
+import Unlock from './pages/Unlock'
+import Coraje from './pages/Coraje'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -21,6 +23,9 @@ function App() {
             <Menu />
             <Routes>
                 <Route path="/" element={<Inicio />} />
+                <Route path="/productos" element={<Productos />} />
+                <Route path="/unlock" element={<Unlock />} />
+                <Route path="/coraje" element={<Coraje />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/conocenos" element={<Conocenos />} />
                 <Route path="/contacto" element={<Contacto />} />

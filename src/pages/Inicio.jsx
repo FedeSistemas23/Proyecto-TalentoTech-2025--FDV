@@ -18,34 +18,28 @@ export default function Inicio() {
     <Container className="mt-4">
       <section className="p-4 text-center">
         <h2 className="mb-4">Emprender con belleza</h2>
-        <p className="mb-4">
-          Emprender en el mundo de la cosmética y la perfumería es más que un negocio: es una forma de empoderar, de conectar con la belleza única de cada persona y ofrecer experiencias sensoriales que transforman el día a día. En Magenta creemos que cada aroma y cada textura cuentan una historia, y acompañamos a quienes sueñan con crear la suya propia.
-        </p>
+        <div className="home-background d-flex align-items-center justify-content-center text-center text-white">
+          <div className="bg-dark bg-opacity-75 p-4 rounded shadow w-75">
+            <p className="fs-5">
+              El emprendedurismo es un motor clave para el desarrollo económico y social. Las personas emprendedoras identifican oportunidades donde otros ven problemas, y están dispuestas a asumir riesgos para transformar sus ideas en negocios viables. Esta actitud proactiva no solo genera beneficios individuales, sino que también contribuye al crecimiento de las comunidades y al dinamismo de las economías.
+              <br /><br />
+              Iniciar un emprendimiento requiere una combinación de habilidades, conocimientos y resiliencia. Los emprendedores deben tener capacidad para planificar, adaptarse al cambio, gestionar recursos y tomar decisiones bajo incertidumbre. Además, es fundamental que tengan una visión clara y una fuerte motivación, ya que los desafíos son constantes y los fracasos pueden formar parte del proceso. En este sentido, el apoyo de redes, mentores y programas de incubación puede ser decisivo para alcanzar el éxito.
+              <br /><br />
+              Hoy en día, el ecosistema emprendedor se ha fortalecido gracias a la tecnología, el acceso a la información y una mayor conciencia social sobre la importancia del emprendimiento. Desde startups tecnológicas hasta proyectos con impacto social o ambiental, las formas de emprender son tan diversas como las personas que las lideran. Fomentar el emprendedurismo es, por lo tanto, una estrategia esencial para construir un futuro más innovador, inclusivo y sostenible.
+            </p>
+          </div>
+        </div>
         <div style={{ flex: 1, maxWidth: '350px' }}>
           {images.map((img) => (
             <img
               src={img.imageUrl}
-              alt={img.alt_description}
+              //alt={img.alt_description}
               className="img-fluid rounded"
               style={{ objectFit: 'cover', width: '100%', height: 'auto' }}
             />
           ))}
         </div>
-        <div className="d-flex flex-column flex-md-row align-items-center gap-4">
-          <div style={{ flex: 1 }}>
-            <p style={{ fontSize: '1.1rem', lineHeight: '1.5' }}>
-              Emprender en el mundo de la cosmética y la perfumería es más que un negocio: es una forma de empoderar, de conectar con la belleza única de cada persona y ofrecer experiencias sensoriales que transforman el día a día. En Magenta creemos que cada aroma y cada textura cuentan una historia, y acompañamos a quienes sueñan con crear la suya propia.
-            </p>
-          </div>
-          
-            <img
-              src={producto.imagen} // Cambia 'imagen' por el campo correcto
-              alt={producto.nombre || 'Producto'}
-              
-            />
-          </div>
-        </div>
       </section>
-    </Container>
+    </Container >
   );
 }
