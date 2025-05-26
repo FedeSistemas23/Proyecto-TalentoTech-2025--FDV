@@ -1,5 +1,3 @@
-import React from 'react';
-import CustomNavbar from './components/Menu';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Menu from './components/Menu'
@@ -7,9 +5,8 @@ import Footer from './components/Footer';
 import Inicio from './pages/Inicio';
 import Login from './pages/Login';
 import Perfil from './pages/Perfil';
-import Conocenos from './pages/Conocenos';
 import Contacto from './pages/Contacto';
-import Productos from './pages/Productos';
+import Perfumeria from './pages/Perfumeria';
 import Administracion from './pages/Admin';
 import RutaProtegida from './components/RutaProtegidas';
 import Unlock from './pages/Unlock'
@@ -23,11 +20,10 @@ function App() {
             <Menu />
             <Routes>
                 <Route path="/" element={<Inicio />} />
-                <Route path="/productos" element={<Productos />} />
+                <Route path="/perfumeria" element={<Perfumeria />} />
                 <Route path="/unlock" element={<Unlock />} />
                 <Route path="/coraje" element={<Coraje />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/conocenos" element={<Conocenos />} />
                 <Route path="/contacto" element={<Contacto />} />
                 <Route path="/perfil/:id" element={
                     <RutaProtegida><Perfil /></RutaProtegida>

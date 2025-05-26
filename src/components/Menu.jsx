@@ -30,11 +30,10 @@ export default function Menu() {
               id="productos-dropdown"
             >
               <NavDropdown.Item as={Link} to="/productos/cosmetica">Cosmética</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/productos/perfumeria">Perfumería</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="perfumeria">Perfumería</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link as={Link} to="/unlock" style={linkStyle}>Unlock</Nav.Link>
-            <Nav.Link as={Link} to="/Coraje" style={linkStyle}>Coraje</Nav.Link>
-            <Nav.Link as={Link} to="/conocenos" style={linkStyle}>Conocenos</Nav.Link>
+            <Nav.Link as={Link} to="/Coraje" style={linkStyle}>Equipo Coraje</Nav.Link>
             <Nav.Link as={Link} to="/contacto" style={linkStyle}>Contacto</Nav.Link>
           </Nav>            
             <Nav>

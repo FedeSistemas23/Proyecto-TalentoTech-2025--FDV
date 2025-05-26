@@ -47,7 +47,7 @@ const Header = () => {
         >
           Bienvenida a Eri.Bagues
         </h1>
-        <p className="lead">Tu espacio para brillar con estilo 💫</p>
+        <p className="lead">"La belleza de ser libre."</p>
       </Container>
     </header>
   );
