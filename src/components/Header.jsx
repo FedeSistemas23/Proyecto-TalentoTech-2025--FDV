@@ -1,27 +1,4 @@
-/*import React from 'react'; 
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-
-function Header() {
-    const headerStyle = {
-      padding: '20px',
-      textAlign: 'center',
-      background: 'linear-gradient(180deg, #d500f9, #ff80ab)',
-      color: 'white',
-      fontSize: '2rem',
-      fontWeight: 'bold',
-      borderBottom: '4px solid #aa00ff'
-    };
-  
-    return (
-      <header style={headerStyle}>
-        <h1>Bienvenidos a Eri.bagues</h1>
-      </header>
-    );
-  }
-  
-  export default Header;*/
-  import React from 'react';
+import React from 'react';
 import { Container } from 'react-bootstrap';
 import { FaHeart, FaStar, FaLeaf } from 'react-icons/fa';
 
@@ -42,12 +19,12 @@ const Header = () => {
         <h1
           style={{
             fontFamily: "'Dancing Script', cursive",
-            fontSize: '3.5rem',
+            fontSize: '7.5rem',
           }}
         >
           Bienvenida a Eri.Bagues
         </h1>
-        <p className="lead">"La belleza de ser libre."</p>
+        <p className="lead fs-2">"La belleza de ser libre."</p>
       </Container>
     </header>
   );

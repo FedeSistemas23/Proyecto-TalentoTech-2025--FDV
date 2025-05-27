@@ -9,7 +9,7 @@ export default function Inicio() {
     fetch(`https://6829df1bab2b5004cb350975.mockapi.io`)
       .then(res => res.json())
       .then(data => {
-        setImages(data.results);
+        setImages(data);
       })
       .catch(error => console.error('Error al obtener imágenes:', error));
   }, []);
@@ -58,7 +58,7 @@ export default function Inicio() {
         <div style={{ flex: 1, maxWidth: '350px' }}>
           {images.map((img) => (
             <img
-              src={img.imageUrl}
+              src={img.imagen}
               //alt={img.alt_description}
               className="img-fluid rounded"
               style={{ objectFit: 'cover', width: '100%', height: 'auto' }}

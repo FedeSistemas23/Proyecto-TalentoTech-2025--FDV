@@ -27,15 +27,15 @@ export default function Coraje() {
       <h2
         className="mb-4"
         style={{
-          fontSize: '2.5rem',
+          fontSize: '2rem',
           fontWeight: '600',
           background: 'linear-gradient(to right, #d63384, #f06292)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           fontFamily: 'cursive',
-          textAlign: 'center',
-        }}
-      >
+          textAlign: 'center',  
+          paddingBottom: '10px',        
+        }}>
         "Elegimos soñar, elegimos crecer, elegimos Emprender"
       </h2>
       {loading ? (
@@ -44,7 +44,7 @@ export default function Coraje() {
         </div>
       ) : (
         <Row className="align-items-center">
-          <Col md={7}>
+          <Col md={7} className="d-flex">
             <div
               className="p-4 rounded shadow text-white"
               style={{
@@ -60,7 +60,7 @@ export default function Coraje() {
               <p>
                 Emprender en el mundo de la cosmética y la perfumería es más que un negocio:
                 es una forma de empoderar, de conectar con la belleza única de cada persona y
-                ofrecer experiencias sensoriales que transforman el día a día. 
+                ofrecer experiencias sensoriales que transforman el día a día.
                 <br></br>
                 En el <strong> Equipo Coraje </strong>
                 creemos que cada aroma y cada textura cuentan una historia, y acompañamos a
@@ -77,12 +77,12 @@ export default function Coraje() {
               </p>
             </div>
           </Col>
-          <Col md={5}>
+          <Col md={5} className="d-flex">
             {imagenSeleccionada && (
               <img
                 src={imagenSeleccionada.imagen}
                 alt={imagenSeleccionada.nombre}
-                className="img-fluid rounded shadow"
+                //className="img-fluid rounded shadow"
                 style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
               />
             )}

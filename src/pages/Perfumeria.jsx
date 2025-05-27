@@ -4,30 +4,39 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Perfumeria = () => {
   const [fragancias, setFragancias] = useState([]);
-  const [mostrarMasculinos, setMostrarMasculinos] = useState(true);
-  const [mostrarFemeninos, setMostrarFemeninos] = useState(true);
+  const [mostrarMasculinos, setMostrarMasculinos] = useState(false);
+  const [mostrarFemeninos, setMostrarFemeninos] = useState(false);
 
-  useEffect(() => {
-    // Fetch único de todas las fragancias
-    fetch('https://6829df1bab2b5004cb350975.mockapi.io/imagenesBagues')
-      .then(res => res.json())
-      .then(data => setFragancias(data))
-      .catch(err => console.error('Error cargando fragancias', err));
-  }, []);
+ // Cargar fragancias una sola vez al montar el componente
+useEffect(() => {
+  fetch('https://6829df1bab2b5004cb350975.mockapi.io/imagenesBagues')
+    .then(res => res.json())
+    .then(data => setFragancias(data))
+    .catch(err => console.error('Error cargando fragancias', err));
+}, []);
 
-  const handleCheckboxChange = (tipo) => {
-    if (tipo === 'masculino') {
-      setMostrarMasculinos(!mostrarMasculinos);
-    } else if (tipo === 'femenino') {
-      setMostrarFemeninos(!mostrarFemeninos);
-    }
-  };
+// Manejo de los checkboxes
+const handleCheckboxChange = (tipo) => {
+  if (tipo === 'masculino') {
+    setMostrarMasculinos(prev => !prev);
+  } else if (tipo === 'femenino') {
+    setMostrarFemeninos(prev => !prev);
+  }
+};
 
-  // Filtrado según los checkboxes
-  const fraganciasFiltradas = fragancias.filter(frag =>
+// Lógica de filtrado
+const fraganciasFiltradas = (() => {
+  // Si ambos están destildados, mostrar todo
+  if (!mostrarMasculinos && !mostrarFemeninos) {
+    return fragancias;
+  }
+
+  // Si alguno está tildado, filtrar por tipo
+  return fragancias.filter(frag =>
     (mostrarMasculinos && frag.tipo === 'masculino') ||
     (mostrarFemeninos && frag.tipo === 'femenino')
   );
+})();
 
   return (
     <Container className="my-5">
