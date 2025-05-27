@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Form } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Perfumeria = () => {
+  const navigate = useNavigate();
   const [fragancias, setFragancias] = useState([]);
   const [mostrarMasculinos, setMostrarMasculinos] = useState(false);
   const [mostrarFemeninos, setMostrarFemeninos] = useState(false);
