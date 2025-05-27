@@ -1,5 +1,8 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { Container, Row, Col, Spinner } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Coraje() {
@@ -27,14 +30,14 @@ export default function Coraje() {
       <h2
         className="mb-4"
         style={{
-          fontSize: '2rem',
+          fontSize: '1.5rem',
           fontWeight: '600',
           background: 'linear-gradient(to right, #d63384, #f06292)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           fontFamily: 'cursive',
-          textAlign: 'center',  
-          paddingBottom: '10px',        
+          textAlign: 'center',
+          paddingBottom: '20px',
         }}>
         "Elegimos soñar, elegimos crecer, elegimos Emprender"
       </h2>
@@ -43,8 +46,8 @@ export default function Coraje() {
           <Spinner animation="border" />
         </div>
       ) : (
-        <Row className="align-items-center">
-          <Col md={7} className="d-flex">
+        <Row className="align-items-center" style={{ paddingTop: '0 px', marginTop:'0px' }}>
+          <Col md={7} className="d-flex" >
             <div
               className="p-4 rounded shadow text-white"
               style={{
@@ -54,13 +57,15 @@ export default function Coraje() {
                 fontStyle: 'italic',
                 fontWeight: '400',
                 lineHeight: '1.8',
-                letterSpacing: '0.3px'
+                letterSpacing: '0.3px',
+                paddingTop: '-30px',
               }}
             >
               <p>
                 Emprender en el mundo de la cosmética y la perfumería es más que un negocio:
                 es una forma de empoderar, de conectar con la belleza única de cada persona y
                 ofrecer experiencias sensoriales que transforman el día a día.
+                <br></br>
                 <br></br>
                 En el <strong> Equipo Coraje </strong>
                 creemos que cada aroma y cada textura cuentan una historia, y acompañamos a
@@ -89,6 +94,23 @@ export default function Coraje() {
           </Col>
         </Row>
       )}
+      <div className="text-center mb-4">
+        <Link to="/contacto">
+          <Button size="lg"
+            style={{
+              background: 'linear-gradient(to bottom, #d63384, #f783ac)',
+              border: 'none',
+              color: 'white',
+              padding: '10px 25px',
+              fontSize: '1.2rem',
+              fontWeight: 'bold',
+              borderRadius: '30px',
+              boxShadow: '0 4px 10px rgba(0,0,0,0.2)'
+            }}>
+            Sumate al Equipo Coraje
+          </Button>
+        </Link>
+      </div>
     </Container>
   );
 }
