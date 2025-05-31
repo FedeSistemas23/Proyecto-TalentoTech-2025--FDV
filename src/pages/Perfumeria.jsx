@@ -174,6 +174,7 @@ const Perfumeria = () => {
                 )}
                 <Card.Body className="d-flex flex-column">
                   <Card.Title>{item.nombre}</Card.Title>
+                  <Card.Text>{item.type}</Card.Text>
                   <Card.Subtitle className="mb-2 text-muted">
                     {item.tipo === 'masculino' ? 'Perfume Masculino' : 'Fragancia Femenina'}
                   </Card.Subtitle>
