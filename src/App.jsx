@@ -11,6 +11,7 @@ import Administracion from './pages/Admin';
 import RutaProtegida from './components/RutaProtegidas';
 import Unlock from './pages/Unlock'
 import Coraje from './pages/Coraje'
+import Producto from './pages/DetalleProducto';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Inicio />} />
                 <Route path="/perfumeria" element={<Perfumeria />} />
+                <Route path="/perfumeria/:id" element={<Producto />} />
                 <Route path="/unlock" element={<Unlock />} />
                 <Route path="/coraje" element={<Coraje />} />
                 <Route path="/login" element={<Login />} />

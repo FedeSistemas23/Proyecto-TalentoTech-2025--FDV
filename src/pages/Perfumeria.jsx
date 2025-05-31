@@ -181,13 +181,9 @@ const Perfumeria = () => {
                   <Card.Text className="flex-grow-1">
                     {descripcionCorta}
                     {descripcionCompleta.length > 120 && (
-                      <Button
-                        variant="link"
-                        size="sm"
-                        className="p-0 ps-1"
-                        onClick={() => toggleDescripcion(item.id)}
-                      >
-                        {isExpanded ? 'Leer menos' : 'Leer más'}
+                      <Button variant="link" size="sm" className="p-0 ps-1" 
+                      onClick={() => navigate(`/perfumeria/${item.id}`)}>
+                        Leer más
                       </Button>
                     )}
                   </Card.Text>
