@@ -197,6 +197,11 @@ const Perfumeria = () => {
                     <br></br>
                     Precio con Descuento: ${item.preciodescuento || 'Consultar'}
                   </Card.Text>
+                  <div className="mt-auto">
+                    <Button variant="primary" onClick={() => handleAgregarAlCarrito(item)}>
+                      Agregar al carrito
+                    </Button>
+                  </div>
                 </Card.Body>
               </Card>
             </Col>
