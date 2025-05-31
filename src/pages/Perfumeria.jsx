@@ -182,7 +182,7 @@ const Perfumeria = () => {
                     {descripcionCorta}
                     {descripcionCompleta.length > 120 && (
                       <Button variant="link" size="sm" className="p-0 ps-1" 
-                      onClick={() => navigate(`/perfumeria/${item.id}`)}>
+                      onClick={() => navigate(`/perfumeria/${item.Id}`)}>
                         Leer más
                       </Button>
                     )}

@@ -37,7 +37,7 @@ const Producto = () => {
                 {producto.tipo === 'masculino' ? 'Perfume Masculino' : 'Fragancia Femenina'}
               </Card.Subtitle>
               <Card.Text>{producto.descripcion}</Card.Text>
-              <Card.Text className="fw-bold">Precio: ${producto.precio || 'Consultar'}</Card.Text>
+              <Card.Text className="fw-bold">Precio: ${producto.precioregular || 'Consultar'}</Card.Text>
 
               <Form.Group controlId="cantidad">
                 <Form.Label>Cantidad</Form.Label>
@@ -60,4 +60,4 @@ const Producto = () => {
   );
 };
 
-export default DetalleProducto;
+export default Producto;
