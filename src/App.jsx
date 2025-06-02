@@ -9,7 +9,7 @@ import Contacto from './pages/Contacto';
 import Perfumeria from './pages/Perfumeria';
 import Administracion from './pages/Admin';
 import RutaProtegida from './components/RutaProtegidas';
-import Unlock from './pages/Unlock'
+import UnlockPromo from './pages/Unlock'
 import Coraje from './pages/Coraje'
 import Producto from './pages/DetalleProducto';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -23,7 +23,7 @@ function App() {
                 <Route path="/" element={<Inicio />} />
                 <Route path="/perfumeria" element={<Perfumeria />} />
                 <Route path="/perfumeria/:id" element={<Producto />} />
-                <Route path="/unlock" element={<Unlock />} />
+                <Route path="/unlock" element={<UnlockPromo />} />
                 <Route path="/coraje" element={<Coraje />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/contacto" element={<Contacto />} />
