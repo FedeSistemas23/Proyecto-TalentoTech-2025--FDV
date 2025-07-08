@@ -88,9 +88,10 @@ const fraganciasFiltradas = (() => {
 };
 
 export default Perfumeria;*/
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { CartContext } from './CartContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Perfumeria = () => {
@@ -99,6 +100,7 @@ const Perfumeria = () => {
   const [mostrarMasculinos, setMostrarMasculinos] = useState(false);
   const [mostrarFemeninos, setMostrarFemeninos] = useState(false);
   const [descripcionExpandida, setDescripcionExpandida] = useState(null);
+  const { agregarAlCarrito } = useContext(CartContext);
 
   useEffect(() => {
     fetch('https://6829df1bab2b5004cb350975.mockapi.io/imagenesBagues')
@@ -182,8 +184,8 @@ const Perfumeria = () => {
                   <Card.Text className="flex-grow-1">
                     {descripcionCorta}
                     {descripcionCompleta.length > 120 && (
-                      <Button variant="link" size="sm" className="p-0 ps-1" 
-                      onClick={() => navigate(`/perfumeria/${item.Id}`)}>
+                      <Button variant="link" size="sm" className="p-0 ps-1"
+                        onClick={() => navigate(`/perfumeria/${item.Id}`)}>
                         Leer más
                       </Button>
                     )}
@@ -195,7 +197,7 @@ const Perfumeria = () => {
                     Precio con Descuento: ${item.preciodescuento || 'Consultar'}
                   </Card.Text>
                   <div className="mt-auto">
-                    <Button variant="primary" onClick={() => handleAgregarAlCarrito(item)}>
+                    <Button variant="primary" onClick={() => agregarAlCarrito(item)}>
                       Agregar al carrito
                     </Button>
                   </div>

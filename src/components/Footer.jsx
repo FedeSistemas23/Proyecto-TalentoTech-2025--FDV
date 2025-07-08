@@ -34,7 +34,7 @@ const Footer = () => {
             <FaGithub />
           </a>
         </div>
-        <p className="mb-0">© {new Date().getFullYear()} Eri.Bagues. Todos los derechos reservados.</p>
+        <p className="mb-0">© {new Date().getFullYear()} Eri.Bagues. Todos los derechos reservados.2025</p>
       </div>
     </footer>
   );

@@ -14,10 +14,14 @@ import Coraje from './pages/Coraje'
 import Producto from './pages/DetalleProducto';
 import Fragancias from './pages/FraganciasUnlock';
 import DetalleFragancia from './pages/DetallesFraganciasUnlock';
+import Carrito from './pages/Carrito';
+import { CartProvider } from './pages/CartContext';
+import CrudProductos from './pages/CrudProductos';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
     return (
+        <CartProvider>
         <BrowserRouter>
             <Header />
             <Menu />
@@ -31,6 +35,8 @@ function App() {
                 <Route path="/coraje" element={<Coraje />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/contacto" element={<Contacto />} />
+                <Route path="/carrito" element={<Carrito />} />
+                <Route path="/crud" element={<CrudProductos />} />
                 <Route path="/perfil/:id" element={
                     <RutaProtegida><Perfil /></RutaProtegida>
                 } />
@@ -40,6 +46,7 @@ function App() {
             </Routes>
             <Footer />
         </BrowserRouter>
+        </CartProvider>
     );
 }
 export default App; 
