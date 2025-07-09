@@ -64,7 +64,7 @@ const UnlockPromo = () => {
       margin: "0 8px",
     },
     perfumeImage: {
-      maxWidth: "400px",
+      maxWidth: "300px",
       borderRadius: "12px",
       boxShadow: "0 4px 12px rgba(255,255,255,0.3)",
     },
@@ -130,13 +130,13 @@ const UnlockPromo = () => {
                         <Card.Img
                           variant="top"
                           src={item.imagen}
-                          style={{ objectFit: 'cover', height: '100%', width: '100%' }}
+                          style={{ objectFit: 'contain', height: '100%', width: '100%' }}
                         />
                       </div>
                     )}
                     <Card.Body className="d-flex flex-column">
                       <Card.Title>{item.name}</Card.Title>
-                      <Card.Text>{item.descripcion}</Card.Text>
+                      
                       <Card.Subtitle className="mb-2 text-muted">
                         {item.genero === 'masculino'
                           ? 'Perfume Masculino'
@@ -147,7 +147,7 @@ const UnlockPromo = () => {
 
                       <Card.Text className="flex-grow-1">
                         {descripcionCorta}
-                        {descripcionCompleta.length > 120 && (
+                        {descripcionCompleta.length > 40 && (
                           <Button variant="link" size="sm" className="p-0 ps-1"
                             onClick={() => navigate(`/detallefragancia/${item.Id}`)}>
                             Leer más

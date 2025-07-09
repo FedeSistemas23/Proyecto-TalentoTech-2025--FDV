@@ -5,7 +5,7 @@ import { FaHeart, FaStar, FaLeaf } from 'react-icons/fa';
 const Header = () => {
   return (
     <header
-      className="py-5 text-center text-white"
+      className="py-2 text-center text-white"
       style={{
         background: 'linear-gradient(180deg, #d63384, #e83e8c, #f06595)',
       }}
@@ -19,7 +19,7 @@ const Header = () => {
         <h1
           style={{
             fontFamily: "'Dancing Script', cursive",
-            fontSize: '7.5rem',
+            fontSize: '4.5rem',
           }}
         >
           Bienvenida a Eri.Bagues

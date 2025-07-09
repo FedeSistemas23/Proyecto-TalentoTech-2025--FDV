@@ -6,7 +6,7 @@ export default function Inicio() {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    fetch(`https://6829df1bab2b5004cb350975.mockapi.io`)
+    fetch(`https://6829df1bab2b5004cb350975.mockapi.io/imagenesBagues`)
       .then(res => res.json())
       .then(data => {
         setImages(data);

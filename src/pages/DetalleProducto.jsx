@@ -25,11 +25,15 @@ const Producto = () => {
     <Container className="my-5">
       <Row className="justify-content-center">
         <Col md={6}>
-          <Card>
+          <Card className="h-70 w-70 d-flex flex-column">
             <Card.Img
               variant="top"
               src={producto.imagen}
-              style={{ objectFit: 'cover', height: '300px' }}
+              style={{
+                maxHeight: '50%',
+                maxWidth: '50%',
+                objectFit: 'contain'
+              }}
             />
             <Card.Body>
               <Card.Title>{producto.nombre}</Card.Title>
@@ -49,9 +53,23 @@ const Producto = () => {
                 />
               </Form.Group>
 
-              <Button variant="primary" className="mt-3" onClick={handleAgregar}>
-                Agregar al carrito
-              </Button>
+              <div className="mt-auto">
+                                  <Button
+                                    className="mx-auto d-block"
+                                    onClick={() => agregarAlCarrito(item)}
+                                    style={{
+                                      backgroundColor: 'magenta',
+                                      borderColor: 'magenta',
+                                      padding: '6px 12px',
+                                      textAlign: 'center',
+                                      color: 'white',
+                                      fontWeight: 'bold',
+                                      borderRadius: '6px'
+                                    }}
+                                  >
+                                    Agregar al carrito
+                                  </Button>
+                                </div>
             </Card.Body>
           </Card>
         </Col>
