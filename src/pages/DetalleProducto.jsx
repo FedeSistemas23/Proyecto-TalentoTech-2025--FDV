@@ -54,22 +54,22 @@ const Producto = () => {
               </Form.Group>
 
               <div className="mt-auto">
-                                  <Button
-                                    className="mx-auto d-block"
-                                    onClick={() => agregarAlCarrito(item)}
-                                    style={{
-                                      backgroundColor: 'magenta',
-                                      borderColor: 'magenta',
-                                      padding: '6px 12px',
-                                      textAlign: 'center',
-                                      color: 'white',
-                                      fontWeight: 'bold',
-                                      borderRadius: '6px'
-                                    }}
-                                  >
-                                    Agregar al carrito
-                                  </Button>
-                                </div>
+                <Button
+                  className="mx-auto d-block"
+                  onClick={() => agregarAlCarrito(item)}
+                  style={{
+                    backgroundColor: 'magenta',
+                    borderColor: 'magenta',
+                    padding: '6px 12px',
+                    textAlign: 'center',
+                    color: 'white',
+                    fontWeight: 'bold',
+                    borderRadius: '6px'
+                  }}
+                >
+                  Agregar al carrito
+                </Button>
+              </div>
             </Card.Body>
           </Card>
         </Col>

@@ -9,8 +9,8 @@ import Contacto from './pages/Contacto';
 import Perfumeria from './pages/Perfumeria';
 import Administracion from './pages/Admin';
 import RutaProtegida from './components/RutaProtegidas';
-import UnlockPromo from './pages/Unlock'
-import Coraje from './pages/Coraje'
+import UnlockPromo from './pages/Unlock';
+import Coraje from './pages/Coraje';
 import Producto from './pages/DetalleProducto';
 import Fragancias from './pages/FraganciasUnlock';
 import DetalleFragancia from './pages/DetallesFraganciasUnlock';

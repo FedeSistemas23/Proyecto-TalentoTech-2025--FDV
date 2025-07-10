@@ -14,16 +14,23 @@ function Fragancias() {
   }, []);
 
   return (
-    <Container className="mt-4">
-      <Row>
+    <Container className="my-5">
+      <Row className="justify-content-center">
         {fragancias.map((item) => (
-          <Col md={4} key={item.id} className="mb-4">
-            <Card>
-              <Card.Img variant="top" src={item.imagen} />
+          <Col md={3} key={item.id} className="mb-4">
+            <Card className="h-70 w-70 d-flex flex-column">
+              <Card.Img
+                variant="top"
+                src={item.imagen}
+                style={{
+                  maxHeight: '50%',
+                  maxWidth: '50%',
+                  objectFit: 'contain'
+                }} />
               <Card.Body>
-                <Card.Title>{item.name}</Card.Title>
-                <Card.Text>{item.descripcion.slice(0, 100)}...</Card.Text>
-                <Button variant="primary" onClick={() => navigate(`/fragancia/${item.id}`)}>
+                <Card.Title>{item.nombre}</Card.Title>
+                <Card.Text>{item.descripcion.slice(0, 50)}...</Card.Text>
+                <Button variant="primary" onClick={() => navigate(`/DetalleFragancia/${item.id}`)}>
                   Ver Detalles
                 </Button>
               </Card.Body>
