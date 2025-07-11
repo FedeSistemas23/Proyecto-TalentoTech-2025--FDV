@@ -6,8 +6,7 @@ import { FaAsterisk } from "react-icons/fa";
 const UnlockPromo = () => {
   const navigate = useNavigate();
   const [imagen, setImagenUrl] = useState(null);
-  const [fragancias, setFragancias] = useState([]);
-  const [mostrarFragancias, setMostrarFragancias] = useState(false);
+  
 
   useEffect(() => {
     fetch("https://6829df1bab2b5004cb350975.mockapi.io/Unlock")
@@ -102,9 +101,7 @@ const UnlockPromo = () => {
               />
             </Col>
           </Row>
-        )}
-
-
+        )} 
         <Row className="mt-4">
           <Col>
             <p className="text-white-50 small">

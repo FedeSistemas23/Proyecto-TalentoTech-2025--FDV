@@ -35,10 +35,10 @@ const Carrito = () => {
         <tbody>
           {carrito.map((item) => (
             <tr key={item.id}>
-              <td>{item.title}</td>
-              <td>${Number(item.price).toFixed(2)}</td>
+              <td>{item.nombre}</td>
+              <td>${Number(item.precioregular).toFixed(2)}</td>
               <td>{item.cantidad}</td>
-              <td>${(Number(item.price) * item.cantidad).toFixed(2)}</td>
+              <td>${(Number(item.priceregular) * item.cantidad).toFixed(2)}</td>
               <td>
                 <Button
                   variant="danger"
