@@ -29,7 +29,6 @@ export default function Menu() {
               title={<span style={linkStyle}>Productos</span>}
               id="productos-dropdown"
             >
-              <NavDropdown.Item as={Link} to="/productos/cosmetica">Cosmética</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="perfumeria">Perfumería</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link as={Link} to="/unlock" style={linkStyle}>Unlock</Nav.Link>

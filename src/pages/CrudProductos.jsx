@@ -75,7 +75,8 @@ const CrudProductos = () => {
           <tr>
             <th>Título</th>
             <th>Descripción</th>
-            <th>Precio</th>
+            <th>Precio Regular</th>
+            <th>Precio con descuento</th>
             <th>Stock</th>
             <th>Imagen</th>
             <th>Acciones</th>
