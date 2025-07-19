@@ -38,7 +38,7 @@ const Carrito = () => {
               <td>{item.nombre}</td>
               <td>${Number(item.precioregular).toFixed(2)}</td>
               <td>{item.cantidad}</td>
-              <td>${(Number(item.priceregular) * item.cantidad).toFixed(2)}</td>
+              <td>${(Number(item.precioregular) * item.cantidad).toFixed(2)}</td>
               <td>
                 <Button
                   variant="danger"

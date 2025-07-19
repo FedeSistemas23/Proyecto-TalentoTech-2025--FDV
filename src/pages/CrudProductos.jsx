@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import { Table, Button, Form, Modal } from 'react-bootstrap';
 
 const API_URL = 'https://6829df1bab2b5004cb350975.mockapi.io/imagenesBagues';

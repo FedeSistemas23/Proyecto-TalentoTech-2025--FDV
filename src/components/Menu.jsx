@@ -1,11 +1,18 @@
-import { Nav, NavDropdown, Button, Container, Navbar } from 'react-bootstrap';
+import React, { createContext, useContext } from "react";
+import { Nav, NavDropdown, Button, Container, Navbar, Badge } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaShoppingCart } from 'react-icons/fa'; // Ícono de carrito
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { CartContext } from "../pages/CartContext";
+
 
 export default function Menu() {
   const navigate = useNavigate();
   const isAuth = localStorage.getItem('auth') === 'true';
+  const { carrito } = useContext(CartContext);
+  const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+
 
   const cerrarSesion = () => {
     localStorage.removeItem('auth');
@@ -34,12 +41,17 @@ export default function Menu() {
             <Nav.Link as={Link} to="/unlock" style={linkStyle}>Unlock</Nav.Link>
             <Nav.Link as={Link} to="/Coraje" style={linkStyle}>Equipo Coraje</Nav.Link>
             <Nav.Link as={Link} to="/contacto" style={linkStyle}>Contacto</Nav.Link>
-          </Nav>            
-            <Nav>
-              <Nav.Link as={Link} to="/carrito" style={linkStyle}>
-                <FaShoppingCart size={22} style={{ marginRight: '5px' }} />
-              </Nav.Link>
-            </Nav>          
+          </Nav>
+          <div className="d-flex align-items-center">
+            <Link to="/carrito" className="text-white position-relative">
+              <FaShoppingCart size={24} />
+              {totalItems > 0 && (
+                <Badge pill bg="danger" className="position-absolute top-0 start-100 translate-middle">
+                  {totalItems}
+                </Badge>
+              )}
+            </Link>
+          </div>
           <Nav>
             {isAuth && (
               <>
