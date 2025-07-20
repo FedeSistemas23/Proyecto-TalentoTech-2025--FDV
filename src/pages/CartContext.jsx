@@ -16,6 +16,7 @@ export const CartProvider = ({ children }) => {
         return prevCarrito.map(item =>
           item.Id === producto.Id ? { ...item, cantidad: item.cantidad + 1 } : item
         );
+        
       }
       // Si no existe, agregarlo con cantidad 1
       return [...prevCarrito, { ...producto, cantidad: 1 }];
@@ -23,7 +24,7 @@ export const CartProvider = ({ children }) => {
   };
 
   // Eliminar producto por ID
-  const eliminarDelCarrito = (id) => {
+  const eliminarDelCarrito = (Id) => {
     setCarrito((prevCarrito) => prevCarrito.filter(item => item.Id !== Id));
   };
 

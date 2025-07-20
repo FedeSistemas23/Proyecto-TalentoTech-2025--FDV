@@ -61,15 +61,15 @@ function Fragancias() {
                 }}
               />
               <Button
-                 variant="primary"
-            onClick={() => navigate(`/DetalleFragancia/${item.id}`)}
-            className="w-100 rounded-0"
-            style={{
-              padding: '12px 0',
-              fontSize: '16px',
-              margin: 0,
-              borderTop: '1px solid #ccc'
-            }}
+                variant="primary"
+                onClick={() => navigate(`/DetalleFragancia/${item.id}`)}
+                className="w-100 rounded-0"
+                style={{
+                  padding: '12px 0',
+                  fontSize: '16px',
+                  margin: 0,
+                  borderTop: '1px solid #ccc'
+                }}
               >
                 {item.nombre}
               </Button>

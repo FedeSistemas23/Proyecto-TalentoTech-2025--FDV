@@ -5,11 +5,11 @@ import { CartContext } from './CartContext';
 const Carrito = () => {
   const { carrito, setCarrito } = useContext(CartContext);
 
-  const eliminarDelCarrito = (id) => {
-    setCarrito(prev => prev.filter(producto => producto.id !== id));
+  const eliminarDelCarrito = (Id) => {
+    setCarrito(prev => prev.filter(producto => producto.Id !== Id));
   };
 
-  const total = carrito.reduce((acc, item) => acc + Number(item.price) * item.cantidad, 0);
+  const total = carrito.reduce((acc, item) => acc + Number(item.precioregular) * item.cantidad, 0);
 
   if (carrito.length === 0) {
     return (
@@ -43,7 +43,7 @@ const Carrito = () => {
                 <Button
                   variant="danger"
                   size="sm"
-                  onClick={() => eliminarDelCarrito(item.id)}
+                  onClick={() => eliminarDelCarrito(item.Id)}
                 >
                   Eliminar
                 </Button>

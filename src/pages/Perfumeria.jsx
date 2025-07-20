@@ -2,22 +2,42 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from './CartContext';
+import { ToastContainer, toast } from 'react-toastify';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Perfumeria = () => {
   const navigate = useNavigate();
   const [fragancias, setFragancias] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [mostrarMasculinos, setMostrarMasculinos] = useState(false);
   const [mostrarFemeninos, setMostrarFemeninos] = useState(false);
   const [descripcionExpandida, setDescripcionExpandida] = useState(null);
   const { agregarAlCarrito } = useContext(CartContext);
 
-  useEffect(() => {
+  /*useEffect(() => {
     fetch('https://6829df1bab2b5004cb350975.mockapi.io/imagenesBagues')
       .then(res => res.json())
       .then(data => setFragancias(data))
       .catch(err => console.error('Error cargando fragancias', err));
+  }, []);*/
+  const cargarProductos = async () => 
+    {
+    try {
+      const res = await fetch('https://6829df1bab2b5004cb350975.mockapi.io/imagenesBagues');
+      const data = await res.json();
+      setFragancias(data);
+    } catch (error) {
+      toast.error("Error al cargar productos");
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    cargarProductos();
   }, []);
+
 
   const handleCheckboxChange = (tipo) => {
     if (tipo === 'masculino') {
@@ -27,9 +47,7 @@ const Perfumeria = () => {
     }
   };
 
-  const toggleDescripcion = (id) => {
-    setDescripcionExpandida(prev => (prev === id ? null : id));
-  };
+  
 
   const fraganciasFiltradas = (() => {
     if (!mostrarMasculinos && !mostrarFemeninos) return fragancias;
@@ -38,6 +56,11 @@ const Perfumeria = () => {
       (mostrarFemeninos && frag.tipo === 'femenino')
     );
   })();
+
+  const handleAgregar = () => {
+    toast.success("Producto agregado al carrito 🎉");
+  };
+
 
   return (
     <Container className="my-4">
@@ -112,7 +135,8 @@ const Perfumeria = () => {
                   <div className="mt-auto">
                     <Button
                       className="mx-auto d-block"
-                      onClick={() => agregarAlCarrito(item)}
+                      onClick={() => {agregarAlCarrito(item); toast.success("Producto agregado al carrito 🎉");}}
+                      
                       style={{
                         backgroundColor: 'magenta',
                         borderColor: 'magenta',
@@ -132,6 +156,7 @@ const Perfumeria = () => {
           );
         })}
       </Row>
+      <ToastContainer />
     </Container>
   );
 };
