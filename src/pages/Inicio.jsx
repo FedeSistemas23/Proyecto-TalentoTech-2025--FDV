@@ -3,17 +3,7 @@ import { useState, useEffect } from 'react';
 
 
 export default function Inicio() {
-  const [images, setImages] = useState([]);
-
-  useEffect(() => {
-    fetch(`https://6829df1bab2b5004cb350975.mockapi.io/imagenesBagues`)
-      .then(res => res.json())
-      .then(data => {
-        setImages(data);
-      })
-      .catch(error => console.error('Error al obtener imágenes:', error));
-  }, []);
-
+  
   return (
     <Container className="mt-4">
       <section className="p-4 text-center">
@@ -55,16 +45,6 @@ export default function Inicio() {
           </p>
         </div>
       </div>
-        <div style={{ flex: 1, maxWidth: '350px' }}>
-          {images.map((img) => (
-            <img
-              src={img.imagen}
-              //alt={img.alt_description}
-              className="img-fluid rounded"
-              style={{ objectFit: 'cover', width: '100%', height: 'auto' }}
-            />
-          ))}
-        </div>
       </section>
     </Container >
   );

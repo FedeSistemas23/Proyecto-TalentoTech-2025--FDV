@@ -52,14 +52,7 @@ export default function Menu() {
               )}
             </Link>
           </div>
-          <Nav>
-            {isAuth && (
-              <>
-                <Nav.Link as={Link} to="/perfil/usuario123" style={linkStyle}>Perfil</Nav.Link>
-                <Nav.Link as={Link} to="/admin" style={linkStyle}>Admin</Nav.Link>
-              </>
-            )}
-          </Nav>
+          
           <Nav>
             {!isAuth ? (
               <Nav.Link as={Link} to="/login" style={linkStyle}>Login</Nav.Link>

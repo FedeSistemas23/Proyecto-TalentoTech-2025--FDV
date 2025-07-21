@@ -8,7 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 function DetalleFragancia() {
   const { id } = useParams();
   const [fragancia, setFragancia] = useState(null);
-  const { agregarAlCarrito } = useContext(CartContext); // 👈 Accedemos al contexto
+  const { agregarAlCarrito } = useContext(CartContext); 
 
   useEffect(() => {
     fetch(`https://6829df1bab2b5004cb350975.mockapi.io/Unlock/${id}`)
@@ -18,7 +18,7 @@ function DetalleFragancia() {
   }, [id]);
 
   const handleAgregarAlCarrito = () => {
-    agregarAlCarrito(fragancia);
+    agregarAlCarrito(fragancia, 'fragancia');
     toast.success('Producto agregado al carrito 🎉');
   };
 

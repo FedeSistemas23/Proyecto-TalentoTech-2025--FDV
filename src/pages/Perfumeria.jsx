@@ -48,22 +48,12 @@ const Perfumeria = () => {
     }
   };
 
-
-
-  /*const fraganciasFiltradas = (() => {
-    if (!mostrarMasculinos && !mostrarFemeninos) return fragancias;
-    return fragancias.filter(frag =>
-      (mostrarMasculinos && frag.tipo === 'masculino') ||
-      (mostrarFemeninos && frag.tipo === 'femenino') &&
-      frag.nombre.toLowerCase().includes(busqueda.toLowerCase())
-    );
-  })();*/
   const fraganciasFiltradas = fragancias.filter(frag =>
-  (!mostrarMasculinos && !mostrarFemeninos || 
-   (mostrarMasculinos && frag.tipo === 'masculino') ||
-   (mostrarFemeninos && frag.tipo === 'femenino')) &&
-  frag.nombre.toLowerCase().includes(busqueda.toLowerCase())
-);
+    (!mostrarMasculinos && !mostrarFemeninos ||
+      (mostrarMasculinos && frag.tipo === 'masculino') ||
+      (mostrarFemeninos && frag.tipo === 'femenino')) &&
+    frag.nombre.toLowerCase().includes(busqueda.toLowerCase())
+  );
 
   const handleAgregar = () => {
     toast.success("Producto agregado al carrito 🎉");
@@ -148,7 +138,7 @@ const Perfumeria = () => {
                   <div className="mt-auto">
                     <Button
                       className="mx-auto d-block"
-                      onClick={() => { agregarAlCarrito(item); toast.success("Producto agregado al carrito 🎉"); }}
+                      onClick={() => { agregarAlCarrito(item, 'perfumeria'); toast.success("Producto agregado al carrito 🎉"); }}
 
                       style={{
                         backgroundColor: 'magenta',

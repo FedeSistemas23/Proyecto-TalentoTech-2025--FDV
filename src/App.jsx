@@ -6,10 +6,8 @@ import Inicio from './pages/Inicio';
 import Login from './pages/Login';
 import { AuthProvider } from "./pages/AuthContext";
 import ProtectedRoute from "./pages/ProtectedRoute";
-import Perfil from './pages/Perfil';
 import Contacto from './pages/Contacto';
 import Perfumeria from './pages/Perfumeria';
-import Administracion from './pages/Admin';
 import RutaProtegida from './components/RutaProtegidas';
 import UnlockPromo from './pages/Unlock';
 import Coraje from './pages/Coraje';
@@ -42,12 +40,6 @@ function App() {
                         <Route path="/contacto" element={<Contacto />} />
                         <Route path="/carrito" element={<Carrito />} />
                         <Route path="/crud" element={<CrudProductos />} />
-                        <Route path="/perfil/:id" element={
-                            <RutaProtegida><Perfil /></RutaProtegida>
-                        } />
-                        <Route path="/admin" element={
-                            <RutaProtegida><Administracion /></RutaProtegida>
-                        } />
                     </Routes>
                     <Footer />
                 </BrowserRouter>
