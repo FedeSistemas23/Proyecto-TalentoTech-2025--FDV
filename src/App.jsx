@@ -38,7 +38,7 @@ function App() {
                         <Route path="/login" element={<Login />} />
                         <Route path="/CrudProductos" element={<ProtectedRoute><CrudProductos /></ProtectedRoute>} />
                         <Route path="/contacto" element={<Contacto />} />
-                        <Route path="/carrito" element={<Carrito />} />
+                        <Route path="/carrito" element={<ProtectedRoute><Carrito /></ProtectedRoute>} />
                         <Route path="/crud" element={<CrudProductos />} />
                     </Routes>
                     <Footer />

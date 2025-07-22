@@ -43,7 +43,7 @@ export default function Menu() {
             <Nav.Link as={Link} to="/contacto" style={linkStyle}>Contacto</Nav.Link>
           </Nav>
           <div className="d-flex align-items-center">
-            <Link to="/carrito" className="text-white position-relative">
+            <Link to="/carrito" className="text-white position-relative me-2">
               <FaShoppingCart size={24} />
               {totalItems > 0 && (
                 <Badge pill bg="danger" className="position-absolute top-0 start-100 translate-middle">
@@ -51,17 +51,16 @@ export default function Menu() {
                 </Badge>
               )}
             </Link>
+            <Nav>
+              {!isAuth ? (
+                <Nav.Link as={Link} to="/login" style={linkStyle}>Login</Nav.Link>
+              ) : (
+                <Button variant="outline-light" onClick={cerrarSesion}>
+                  Cerrar sesión
+                </Button>
+              )}
+            </Nav>
           </div>
-          
-          <Nav>
-            {!isAuth ? (
-              <Nav.Link as={Link} to="/login" style={linkStyle}>Login</Nav.Link>
-            ) : (
-              <Button variant="outline-light" onClick={cerrarSesion}>
-                Cerrar sesión
-              </Button>
-            )}
-          </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-
+import { useAuth } from "./AuthContext";
+import { useNavigate } from "react-router-dom";
 import { Table, Button, Form, Modal } from 'react-bootstrap';
 
 const API_URL = 'https://6829df1bab2b5004cb350975.mockapi.io/imagenesBagues';
@@ -7,8 +8,10 @@ const API_URL = 'https://6829df1bab2b5004cb350975.mockapi.io/imagenesBagues';
 const CrudProductos = () => {
   const [productos, setProductos] = useState([]);
   const [show, setShow] = useState(false);
-  const [form, setForm] = useState({ title: '', description: '', price: '', stock: '', image: '' });
+  const [form, setForm] = useState({ title: '', description: '', price: '', pricewhitdiscount: '', stock: '', image: '' });
   const [editId, setEditId] = useState(null);
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   const getProductos = async () => {
     const res = await fetch(API_URL);
@@ -27,10 +30,14 @@ const CrudProductos = () => {
     if (producto) {
       setForm({
         ...producto,
-        price: Number(producto.price),
-        stock: Number(producto.stock)
+        title: (producto.nombre),
+        description: (producto.descripcion),
+        price: Number(producto.precioregular),
+        pricewhitdiscount:Number(producto.preciodescuento),
+        stock: Number(producto.stock),
+        imange: (producto.imagen),
       });
-      setEditId(producto.id);
+      setEditId(producto.Id);
     }
   };
 
@@ -38,9 +45,14 @@ const CrudProductos = () => {
     e.preventDefault();
 
     const productData = {
-      ...form,
-      price: Number(form.price),
-      stock: Number(form.stock)
+      nombre: form.title,
+      descripcion: form.description,
+      precioregular: Number(form.price),
+      preciodescuento: Number(form.pricewhitdiscount),
+      stock: Number(form.stock),
+      imagen: form.image,
+      // si querés que el precio con descuento sea igual al regular:
+      
     };
 
     const method = editId ? 'PUT' : 'POST';
@@ -56,9 +68,9 @@ const CrudProductos = () => {
     getProductos();
   };
 
-  const eliminarProducto = async (id) => {
+  const eliminarProducto = async (Id) => {
     if (window.confirm('¿Seguro que quieres eliminar este producto?')) {
-      await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+      await fetch(`${API_URL}/${Id}`, { method: 'DELETE' });
       getProductos();
     }
   };
@@ -67,9 +79,18 @@ const CrudProductos = () => {
     getProductos();
   }, []);
 
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
+
   return (
+
     <div className="container mt-4">
-      <h2>CRUD de Productos</h2>
+      <h2>Gestion de Stock</h2>
+      <Button variant="outline-light" onClick={handleLogout}>
+        Cerrar sesión
+      </Button>
       <Button className="mb-3" onClick={() => handleShow()}>Agregar Producto</Button>
       <Table striped bordered hover>
         <thead>
@@ -85,7 +106,7 @@ const CrudProductos = () => {
         </thead>
         <tbody>
           {productos.map(prod => (
-            <tr key={prod.id}>
+            <tr key={prod.Id}>
               <td>{prod.nombre}</td>
               <td>{prod.descripcion}</td>
               <td>${Number(prod.precioregular).toFixed(2)}</td>
@@ -139,6 +160,15 @@ const CrudProductos = () => {
               />
             </Form.Group>
             <Form.Group className="mb-2">
+              <Form.Label>Precio</Form.Label>
+              <Form.Control
+                type="number"
+                value={form.pricewhitdiscount}
+                onChange={e => setForm({ ...form, pricewhitdiscount: Number(e.target.value) })}
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-2">
               <Form.Label>Stock</Form.Label>
               <Form.Control
                 type="number"
@@ -160,6 +190,7 @@ const CrudProductos = () => {
         </Modal.Body>
       </Modal>
     </div>
+
   );
 };
 
