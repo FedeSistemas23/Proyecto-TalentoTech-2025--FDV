@@ -16,12 +16,7 @@ const Perfumeria = () => {
   const [busqueda, setBusqueda] = useState('');
   const { agregarAlCarrito } = useContext(CartContext);
 
-  /*useEffect(() => {
-    fetch('https://6829df1bab2b5004cb350975.mockapi.io/imagenesBagues')
-      .then(res => res.json())
-      .then(data => setFragancias(data))
-      .catch(err => console.error('Error cargando fragancias', err));
-  }, []);*/
+  
   const cargarProductos = async () => {
     try {
       const res = await fetch('https://6829df1bab2b5004cb350975.mockapi.io/imagenesBagues');

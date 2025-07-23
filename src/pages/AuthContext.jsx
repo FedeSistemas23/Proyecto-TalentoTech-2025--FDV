@@ -9,35 +9,33 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const savedToken = localStorage.getItem("token");
-    const savedUser = localStorage.getItem("user");
-    if (savedToken && savedUser) {
-      setToken(savedToken);
-      setUser(savedUser);
-    }
-  }, []);
+  const savedToken = sessionStorage.getItem("token");
+  const savedUser = sessionStorage.getItem("user");
+  if (savedToken && savedUser) {
+    setToken(savedToken);
+    setUser(savedUser);
+  }
+}, []);
 
 
   const login = (username, password) => {
-    if (username === "admin" && password === "1234") {
-      const tokenFalso = "dG9rZW5GYWxzbzEyMzQ=";
-      setToken(tokenFalso);
-      setUser(username);
-      localStorage.setItem("token", tokenFalso);
-      localStorage.setItem("user", username);
-      return true;
-    }
-    return false;
-  };
+  if (username === "admin" && password === "1234") {
+    const tokenFalso = "dG9rZW5GYWxzbzEyMzQ=";
+    setToken(tokenFalso);
+    setUser(username);
+    sessionStorage.setItem("token", tokenFalso);
+    sessionStorage.setItem("user", username);
+    return true;
+  }
+  return false;
+};
 
-
-  const logout = () => {
-    setToken(null);
-    setUser(null);
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-  };
-
+const logout = () => {
+  setToken(null);
+  setUser(null);
+  sessionStorage.removeItem("token");
+  sessionStorage.removeItem("user");
+};
   return (
     <AuthContext.Provider value={{ token, user, login, logout }}>
       {children}
