@@ -20,11 +20,10 @@ export const CartProvider = ({ children }) => {
       };
     } else if (categoria === 'fragancia') {
       producto = {
-        Id: productoOriginal.id, // fijate que en fragancias es `id` y no `Id`
-        nombre: productoOriginal.name,
+        Id: productoOriginal.Id, // fijate que en fragancias es `id` y no `Id`
+        nombre: productoOriginal.nombre,
         precio: productoOriginal.precioenvase1, // podés hacerlo dinámico si querés
         imagen: productoOriginal.imagen,
-        categoria: 'fragancia'
       };
     }
 

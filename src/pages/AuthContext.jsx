@@ -3,14 +3,12 @@ import { createContext, useContext, useEffect, useState } from "react";
 const AuthContext = createContext();
 
 
-export function AuthProvider({ children }) 
-{
+export function AuthProvider({ children }) {
 
   const [token, setToken] = useState(null);
   const [user, setUser] = useState(null);
 
-   useEffect(() => 
-    {
+  useEffect(() => {
     const savedToken = localStorage.getItem("token");
     const savedUser = localStorage.getItem("user");
     if (savedToken && savedUser) {
@@ -20,10 +18,8 @@ export function AuthProvider({ children })
   }, []);
 
 
-  const login = (username, password) => 
-    {
-    if (username === "admin" && password === "1234") 
-      {
+  const login = (username, password) => {
+    if (username === "admin" && password === "1234") {
       const tokenFalso = "dG9rZW5GYWxzbzEyMzQ=";
       setToken(tokenFalso);
       setUser(username);
@@ -35,15 +31,14 @@ export function AuthProvider({ children })
   };
 
 
-    const logout = () => 
-    {
+  const logout = () => {
     setToken(null);
     setUser(null);
     localStorage.removeItem("token");
     localStorage.removeItem("user");
   };
 
-    return (
+  return (
     <AuthContext.Provider value={{ token, user, login, logout }}>
       {children}
     </AuthContext.Provider>

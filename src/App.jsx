@@ -8,13 +8,13 @@ import { AuthProvider } from "./pages/AuthContext";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import Contacto from './pages/Contacto';
 import Perfumeria from './pages/Perfumeria';
-import RutaProtegida from './components/RutaProtegidas';
 import UnlockPromo from './pages/Unlock';
 import Coraje from './pages/Coraje';
 import Producto from './pages/DetalleProducto';
 import Fragancias from './pages/FraganciasUnlock';
 import DetalleFragancia from './pages/DetallesFraganciasUnlock';
 import Carrito from './pages/Carrito';
+import PaymentsForm from './pages/PaymentsForm';
 import { CartProvider } from './pages/CartContext';
 import CrudProductos from './pages/CrudProductos';
 
@@ -38,7 +38,8 @@ function App() {
                         <Route path="/login" element={<Login />} />
                         <Route path="/CrudProductos" element={<ProtectedRoute><CrudProductos /></ProtectedRoute>} />
                         <Route path="/contacto" element={<Contacto />} />
-                        <Route path="/carrito" element={<ProtectedRoute><Carrito /></ProtectedRoute>} />
+                        <Route path="/carrito" element={<Carrito />} />
+                        <Route path="/formulariopago" element={<ProtectedRoute><PaymentsForm /></ProtectedRoute>} />
                         <Route path="/crud" element={<CrudProductos />} />
                     </Routes>
                     <Footer />

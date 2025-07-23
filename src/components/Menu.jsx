@@ -1,22 +1,22 @@
 import React, { createContext, useContext } from "react";
 import { Nav, NavDropdown, Button, Container, Navbar, Badge } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from "../pages/AuthContext";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaShoppingCart } from 'react-icons/fa'; // Ícono de carrito
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CartContext } from "../pages/CartContext";
 
 
 export default function Menu() {
   const navigate = useNavigate();
-  const isAuth = localStorage.getItem('auth') === 'true';
+  const { user, logout } = useAuth();
   const { carrito } = useContext(CartContext);
   const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
 
 
   const cerrarSesion = () => {
-    localStorage.removeItem('auth');
-    navigate('/login');
+    logout();           
+    navigate('/login'); 
   };
 
   const linkStyle = { color: 'white', fontWeight: '500' };
@@ -36,7 +36,7 @@ export default function Menu() {
               title={<span style={linkStyle}>Productos</span>}
               id="productos-dropdown"
             >
-              <NavDropdown.Item as={Link} to="perfumeria">Perfumería</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/perfumeria">Perfumería</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link as={Link} to="/unlock" style={linkStyle}>Unlock</Nav.Link>
             <Nav.Link as={Link} to="/Coraje" style={linkStyle}>Equipo Coraje</Nav.Link>
@@ -52,11 +52,11 @@ export default function Menu() {
               )}
             </Link>
             <Nav>
-              {!isAuth ? (
+              {!user ? (
                 <Nav.Link as={Link} to="/login" style={linkStyle}>Login</Nav.Link>
               ) : (
                 <Button variant="outline-light" onClick={cerrarSesion}>
-                  Cerrar sesión
+                  Cerrar sesión ({user})
                 </Button>
               )}
             </Nav>
