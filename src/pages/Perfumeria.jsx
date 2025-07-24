@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { CartContext } from './CartContext';
 import { ToastContainer, toast } from 'react-toastify';
 import Buscador from '../components/Buscador';
+import Paginador from '../components/Paginador';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Perfumeria = () => {
@@ -15,8 +16,12 @@ const Perfumeria = () => {
   const [descripcionExpandida, setDescripcionExpandida] = useState(null);
   const [busqueda, setBusqueda] = useState('');
   const { agregarAlCarrito } = useContext(CartContext);
+  const [paginaActual, setPaginaActual] = useState(1);
+  const itemsPorPagina = 6;
+  const indiceInicial = (paginaActual - 1) * itemsPorPagina;
+  const indiceFinal = indiceInicial + itemsPorPagina;
 
-  
+
   const cargarProductos = async () => {
     try {
       const res = await fetch('https://6829df1bab2b5004cb350975.mockapi.io/imagenesBagues');
@@ -49,6 +54,7 @@ const Perfumeria = () => {
       (mostrarFemeninos && frag.tipo === 'femenino')) &&
     frag.nombre.toLowerCase().includes(busqueda.toLowerCase())
   );
+  const fraganciasPaginadas = fraganciasFiltradas.slice(indiceInicial, indiceFinal);
 
   const handleAgregar = () => {
     toast.success("Producto agregado al carrito 🎉");
@@ -86,7 +92,7 @@ const Perfumeria = () => {
       </Form>
 
       <Row>
-        {fraganciasFiltradas.map((item) => {
+        {fraganciasPaginadas.map((item) => {
           const descripcionCompleta = item.descripcion || 'Fragancia encantadora para uso diario.';
           const isExpanded = descripcionExpandida === item.id;
           const descripcionCorta = descripcionCompleta.length > 120 && !isExpanded
@@ -94,7 +100,7 @@ const Perfumeria = () => {
             : descripcionCompleta;
 
           return (
-            <Col key={item.id} md={3} className="mb-4 d-flex">
+            <Col key={item.id} md={4} className="mb-4 d-flex">
               <Card className="h-100 w-100 d-flex flex-column">
                 {item.imagen && (
                   <div style={{ height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -155,6 +161,12 @@ const Perfumeria = () => {
         })}
       </Row>
       <ToastContainer />
+      <Paginador
+        totalItems={fraganciasFiltradas.length}
+        itemsPorPagina={itemsPorPagina}
+        paginaActual={paginaActual}
+        onPaginaChange={setPaginaActual}
+      />
     </Container>
   );
 };
