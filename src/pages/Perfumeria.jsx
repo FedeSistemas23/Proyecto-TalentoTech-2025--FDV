@@ -94,7 +94,7 @@ const Perfumeria = () => {
       <Row>
         {fraganciasPaginadas.map((item) => {
           const descripcionCompleta = item.descripcion || 'Fragancia encantadora para uso diario.';
-          const isExpanded = descripcionExpandida === item.id;
+          const isExpanded = descripcionExpandida === item.Id;
           const descripcionCorta = descripcionCompleta.length > 120 && !isExpanded
             ? descripcionCompleta.slice(0, 40) + '...'
             : descripcionCompleta;
@@ -139,7 +139,14 @@ const Perfumeria = () => {
                   <div className="mt-auto">
                     <Button
                       className="mx-auto d-block"
-                      onClick={() => { agregarAlCarrito(item, 'perfumeria'); toast.success("Producto agregado al carrito 🎉"); }}
+                      onClick={() => {
+                        agregarAlCarrito({
+                          Id: item.Id,
+                          nombre: item.nombre,
+                          precioregular: item.precioregular || null,
+                          preciodescuento: item.preciodescuento || null,
+                        }); toast.success("Producto agregado al carrito 🎉");
+                      }}
 
                       style={{
                         backgroundColor: 'magenta',

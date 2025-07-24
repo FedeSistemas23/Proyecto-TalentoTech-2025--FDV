@@ -23,7 +23,13 @@ const Carrito = () => {
     setCarrito(prev => prev.filter(producto => producto.Id !== Id));
   };
 
-  const total = carrito.reduce((acc, item) => acc + Number(item.precioregular) * item.cantidad, 0);
+  const total = carrito.reduce(
+    (acc, item) =>
+      acc +
+      (Number(item.precioregular || item.preciodescuento || item.precioenvase1 || item.percioenvase2 || 0) *
+        item.cantidad),
+    0
+  );
 
   if (carrito.length === 0) {
     return (
@@ -40,7 +46,10 @@ const Carrito = () => {
         <thead>
           <tr>
             <th>Producto</th>
-            <th>Precio unitario</th>
+            <th>Precio Regular</th>
+            <th>Precio con Descuento</th>
+            <th>Precio envase Grande</th>
+            <th>Precio con envase chico</th>
             <th>Cantidad</th>
             <th>Total</th>
             <th></th>
@@ -48,11 +57,15 @@ const Carrito = () => {
         </thead>
         <tbody>
           {carrito.map((item) => (
-            <tr key={item.id}>
+            <tr key={item.Id || item.id}>
               <td>{item.nombre}</td>
               <td>${Number(item.precioregular).toFixed(2)}</td>
+              <td>${Number(item.preciodescuento).toFixed(2)}</td>
+              <td>${Number(item.precioenvase1).toFixed(2)}</td>
+              <td>${Number(item.percioenvase2).toFixed(2)}</td>
               <td>{item.cantidad}</td>
-              <td>${(Number(item.precioregular) * item.cantidad).toFixed(2)}</td>
+              <td>${(Number(item.precioregular || item.preciodescuento ||
+                item.precioenvase1 || item.percioenvase2) * item.cantidad).toFixed(2)}</td>
               <td>
                 <Button
                   variant="danger"

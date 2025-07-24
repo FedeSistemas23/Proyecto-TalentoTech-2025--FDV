@@ -19,7 +19,7 @@ import { CartProvider } from './pages/CartContext';
 import CrudProductos from './pages/CrudProductos';
 import { Helmet } from 'react-helmet';
 import { ToastContainer } from 'react-toastify';
-import { Paginador} from './components/Paginador';
+import Paginador from './components/Paginador';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 

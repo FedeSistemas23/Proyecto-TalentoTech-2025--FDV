@@ -6,6 +6,14 @@ import { toast, ToastContainer } from 'react-toastify';
 import Buscador from '../components/Buscador';
 import Paginador from '../components/Paginador';
 
+
+function convertirPrecio(precioStr) {
+  if (!precioStr) return 0;
+  // Eliminar " ARS", puntos de miles, y cambiar coma por punto decimal
+  const limpio = precioStr.replace(" ARS", "").replace(/\./g, "").replace(",", ".");
+  return parseFloat(limpio);
+}
+
 function Fragancias() {
   const [fragancias, setFragancias] = useState([]);
   const navigate = useNavigate();
@@ -95,7 +103,12 @@ function Fragancias() {
                   Ver más
                 </Button>
                 <Button variant="warning" size="sm" onClick={() => {
-                  agregarAlCarrito(item, 'fragancia');
+                  agregarAlCarrito({
+                    id: item.id,
+                    nombre: item.name,
+                    precioenvase1: convertirPrecio(item.precioenvase1),
+                    precioenvase2: convertirPrecio(item.percioenvase2),
+                  });
                   toast.success('Producto agregado al carrito 🎉');
                 }} >
                   Agregar al carrito
