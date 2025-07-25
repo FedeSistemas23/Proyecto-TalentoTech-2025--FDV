@@ -100,7 +100,7 @@ const Perfumeria = () => {
             : descripcionCompleta;
 
           return (
-            <Col key={item.id} md={4} className="mb-4 d-flex">
+            <Col key={item.id} md={4} className="col-12 col-md-6 col-lg-4 mb-4 d-flex">
               <Card className="h-100 w-100 d-flex flex-column">
                 {item.imagen && (
                   <div style={{ height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

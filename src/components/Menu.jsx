@@ -43,7 +43,7 @@ export default function Menu() {
             <Nav.Link as={Link} to="/contacto" style={linkStyle}>Contacto</Nav.Link>
           </Nav>
           <div className="d-flex align-items-center">
-            <Link to="/carrito" className="text-white position-relative me-2">
+            <Link to="/carrito" className="text-white position-relative me-4">
               <FaShoppingCart size={24} />
               {totalItems > 0 && (
                 <Badge pill bg="danger" className="position-absolute top-0 start-100 translate-middle">
@@ -51,6 +51,8 @@ export default function Menu() {
                 </Badge>
               )}
             </Link>
+            </div>
+            <div className="d-flex align-items-center">
             <Nav>
               {!user ? (
                 <Nav.Link as={Link} to="/login" style={linkStyle}>Login</Nav.Link>

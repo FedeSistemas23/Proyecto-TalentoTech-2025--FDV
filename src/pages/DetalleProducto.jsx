@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext} from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
+import { CartContext } from './CartContext';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Producto = () => {
   const { id } = useParams();
   const [producto, setProducto] = useState(null);
   const [cantidad, setCantidad] = useState(1);
+  const { agregarAlCarrito } = useContext(CartContext);
 
   useEffect(() => {
     fetch(`https://6829df1bab2b5004cb350975.mockapi.io/imagenesBagues/${id}`)
@@ -56,7 +59,15 @@ const Producto = () => {
               <div className="mt-auto">
                 <Button
                   className="mx-auto d-block"
-                  onClick={() => agregarAlCarrito(item)}
+                  onClick={() => {
+                    agregarAlCarrito({
+                      Id: producto.id,
+                      nombre: producto.nombre,
+                      precioregular: producto.precioregular || null,
+                      preciodescuento: producto.preciodescuento || null,
+                    }); toast.success("Producto agregado al carrito 🎉");
+                  }}
+
                   style={{
                     backgroundColor: 'magenta',
                     borderColor: 'magenta',
@@ -73,8 +84,9 @@ const Producto = () => {
             </Card.Body>
           </Card>
         </Col>
-      </Row>
-    </Container>
+      </Row>.
+      <ToastContainer />
+    </Container >
   );
 };
 
