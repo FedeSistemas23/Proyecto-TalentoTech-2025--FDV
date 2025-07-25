@@ -55,7 +55,7 @@ export default function Menu() {
           </div>
           <div className="d-flex align-items-center">
             {/* Link Gestión de Productos solo si está logueado */}
-            {user && (
+            {user === "admin" && (
               <div style={{ marginRight: '15px' }}>
                 <Nav.Link as={Link} to="/CrudProductos" style={linkStyle}>
                   Gestión de Productos

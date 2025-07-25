@@ -44,7 +44,7 @@ const CrudProductos = () => {
         price: Number(producto.precioregular),
         pricewhitdiscount: Number(producto.preciodescuento),
         stock: Number(producto.stock),
-        imange: (producto.imagen),
+        image: (producto.imagen),
       });
       setEditId(producto.Id);
     }
