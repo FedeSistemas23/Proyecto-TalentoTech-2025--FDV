@@ -15,8 +15,8 @@ export default function Menu() {
 
 
   const cerrarSesion = () => {
-    logout();           
-    navigate('/login'); 
+    logout();
+    navigate('/login');
   };
 
   const linkStyle = { color: 'white', fontWeight: '500' };
@@ -32,6 +32,7 @@ export default function Menu() {
         <Navbar.Collapse id="navbar-nav">
           <Nav className="mx-auto">
             <Nav.Link as={Link} to="/" style={linkStyle}>Inicio</Nav.Link>
+
             <NavDropdown
               title={<span style={linkStyle}>Productos</span>}
               id="productos-dropdown"
@@ -51,8 +52,17 @@ export default function Menu() {
                 </Badge>
               )}
             </Link>
-            </div>
-            <div className="d-flex align-items-center">
+          </div>
+          <div className="d-flex align-items-center">
+            {/* Link Gestión de Productos solo si está logueado */}
+            {user && (
+              <div style={{ marginRight: '15px' }}>
+                <Nav.Link as={Link} to="/CrudProductos" style={linkStyle}>
+                  Gestión de Productos
+                </Nav.Link>
+              </div>
+            )}
+
             <Nav>
               {!user ? (
                 <Nav.Link as={Link} to="/login" style={linkStyle}>Login</Nav.Link>

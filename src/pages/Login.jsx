@@ -17,7 +17,7 @@ export default function Login()
     e.preventDefault();
     if (login(user, pass)) 
       {
-      navigate("/CrudProductos");
+      navigate("/");
     } else {
       setError("Usuario o contraseña inválidos");
     }
