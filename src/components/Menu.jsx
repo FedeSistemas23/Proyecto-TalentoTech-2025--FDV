@@ -10,12 +10,15 @@ import { CartContext } from "../pages/CartContext";
 export default function Menu() {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
-  const { carrito } = useContext(CartContext);
+  const { carrito, vaciarCarrito } = useContext(CartContext);
   const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+
+  
 
 
   const cerrarSesion = () => {
     logout();
+    vaciarCarrito();
     navigate('/login');
   };
 

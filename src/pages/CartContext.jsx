@@ -1,10 +1,16 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 export const CartContext = createContext();
 
 // Proveedor del contexto
 export const CartProvider = ({ children }) => {
-  const [carrito, setCarrito] = useState([]);
+  const [carrito, setCarrito] = useState(() => {
+    const saved = sessionStorage.getItem("carrito");
+    return saved ? JSON.parse(saved) : [];
+  });
+  useEffect(() => {
+    sessionStorage.setItem("carrito", JSON.stringify(carrito));
+  }, [carrito]);
 
   // Agregar producto al carrito, con categoría identificada
   const agregarAlCarrito = (producto) => {
@@ -27,6 +33,7 @@ export const CartProvider = ({ children }) => {
 
   const vaciarCarrito = () => {
     setCarrito([]);
+    sessionStorage.removeItem("carrito");
   };
 
   return (
